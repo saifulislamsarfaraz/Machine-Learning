@@ -106,5 +106,31 @@ print('Regression Tree test set RMSE: {:.2f}'.format(rmse_dt))
 
 #The Bias-Variance Tradeoff
 
+# Import train_test_split from sklearn.model_selection
+from sklearn.model_selection import train_test_split
+
+# Set SEED for reproducibility
+SEED = 1
+
+# Split the data into 70% train and 30% test
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=SEED)
+
+# Instantiate a DecisionTreeRegressor dt
+dt = DecisionTreeRegressor(max_depth=4, min_samples_leaf=0.26, random_state=SEED)
 
 
+
+# Import mean_squared_error from sklearn.metrics as MSE
+from sklearn.metrics import mean_squared_error as MSE
+
+# Fit dt to the training set
+dt.fit(X_train, y_train)
+
+# Predict the labels of the training set
+y_pred_train = dt.predict(X_train)
+
+# Evaluate the training set RMSE of dt
+RMSE_train = (MSE(y_train, y_pred_train))**(1/2)
+
+# Print RMSE_train
+print('Train RMSE: {:.2f}'.format(RMSE_train))
