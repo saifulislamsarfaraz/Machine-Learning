@@ -164,3 +164,45 @@ for clf_name, clf in classifiers:
 
     # Evaluate clf's accuracy on the test set
     print('{:s} : {:.3f}'.format(clf_name, accuracy))
+
+    
+# Import VotingClassifier from sklearn.ensemble
+from sklearn.ensemble import VotingClassifier
+
+# Instantiate a VotingClassifier vc
+vc = VotingClassifier(estimators=classifiers)
+
+# Fit vc to the training set
+vc.fit(X_train, y_train)
+
+# Evaluate the test set predictions
+y_pred = vc.predict(X_test)
+
+# Calculate accuracy score
+accuracy = accuracy_score(y_pred, y_test)
+print('Voting Classifier: {:.3f}'.format(accuracy))
+
+
+#Define the bagging classifier
+
+# Import DecisionTreeClassifier
+from sklearn.tree import DecisionTreeClassifier
+
+# Import BaggingClassifier
+from sklearn.ensemble import BaggingClassifier
+
+# Instantiate dt
+dt = DecisionTreeClassifier(random_state=1)
+
+# Instantiate bc
+bc = BaggingClassifier(base_estimator=dt, n_estimators=50, random_state=1)
+
+# Fit bc to the training set
+bc.fit(X_train, y_train)
+
+# Predict test set labels
+y_pred = bc.predict(X_test)
+
+# Evaluate acc_test
+acc_test = accuracy_score(y_pred, y_test)
+print('Test set accuracy of bc: {:.2f}'.format(acc_test))
