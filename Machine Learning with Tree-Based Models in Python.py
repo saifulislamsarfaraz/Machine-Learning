@@ -345,6 +345,9 @@ y_pred = gb.predict(X_test)
 
 
 
+
+
+Evaluate the GB regressor
 # Import mean_squared_error as MSE
 from sklearn.metrics import mean_squared_error as MSE
 
