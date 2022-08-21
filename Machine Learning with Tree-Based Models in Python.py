@@ -361,3 +361,22 @@ rmse_test = mse_test**(1/2)
 print('Test set RMSE of gb: {:.3f}'.format(rmse_test))
 
 
+
+
+
+
+
+Regression with SGB
+
+# Import GradientBoostingRegressor
+from sklearn.ensemble import GradientBoostingRegressor
+
+# Instantiate sgbr
+sgbr = GradientBoostingRegressor(max_depth=4,
+                                subsample=0.9,
+                                max_features=0.75,
+                                n_estimators=200,
+                                random_state=2)
+
+
+
