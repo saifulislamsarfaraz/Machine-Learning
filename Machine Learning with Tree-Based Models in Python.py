@@ -380,3 +380,11 @@ sgbr = GradientBoostingRegressor(max_depth=4,
 
 
 
+Train the SGB regressor
+# Fit sgbr to the training s
+sgbr.fit(X_train, y_train)
+
+
+# Predict test set labels
+y_pred = sgbr.predict(X_test)
+
